@@ -1,0 +1,3 @@
+CVM is a tiny virtual machine implemented in c++. It works by loading a file and reading the bytecode from it.
+
+Behaviour of the bytes is specified in BYTECODE.

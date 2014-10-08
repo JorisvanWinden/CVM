@@ -1,0 +1,17 @@
+00: Add 2 numbers from the stack, push the result.
+01: Subtract 2 numbers from the stack, push the result. The first number will be the base.
+02: Multiply 2 numbers from the stack, push the result.
+03: Divide 2 numbers from the stack, push the result. The first number will be the numerator.
+04: Push the next byte to the stack. 
+05: Not implemented yet.
+06: Print the first number from the stack.
+07: Marks the beginning of a subroutine.
+08: Marks the ending of a subroutine.
+09: Enter subroutine. The next byte specifies which subroutine to use.
+
+Each instruction consists of an operation and a parameter. With most operations, the parameter will be ignored.
+
+Expamples:
+
+0401: Push the number 1 to the stack.
+0903: Enter the third specified subroutine.
