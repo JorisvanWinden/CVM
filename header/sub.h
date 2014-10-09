@@ -5,7 +5,7 @@
 
 class Sub {
 public:
-	Sub(Sub * subs[], char * bytecode, int size);
+	Sub(Sub ** subs, char * bytecode, int size);
 	void run();
 private:
 	void execute(char inst, char par);

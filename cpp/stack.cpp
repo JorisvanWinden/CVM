@@ -4,7 +4,7 @@
 Stack::Stack(int size) : size(size), top(-1), stack(new int[size]) {}
 
 Stack::~Stack() {
-	delete stack;
+	delete[] stack;
 }
 
 int Stack::peek() {

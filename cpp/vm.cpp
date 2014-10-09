@@ -26,6 +26,7 @@ void VM::run(std::ifstream & file) {
 	file.read(bytes, len);
 	interpret(bytes, len);
 
+	delete[] bytes;
 }
 
 void VM::interpret(char bytecode[], int size) {
@@ -33,7 +34,9 @@ void VM::interpret(char bytecode[], int size) {
 		if(bytecode[i] == OPER_MKS) {
 			for(int j = i; j < size; j++) {
 				if(bytecode[j] == OPER_END) {
-					make_sub(bytecode + i, j - i + 1);
+					int start = i;
+					int size = j - i + 1;
+					make_sub(bytecode + start, size);
 					break;
 				}
 			}
