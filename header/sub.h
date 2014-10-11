@@ -5,21 +5,22 @@
 
 class Sub {
 public:
-	Sub(Sub ** subs, char * bytecode, int size);
-	void run();
+	Sub(Sub ** subs, char * bytecode, int size, int args);
+	void run(Stack & stack);
+	int get_args();
 private:
-	void execute(char inst, char par);
+	void execute(Stack & stack, char inst, char par);
 
-	void add();
-	void subtract();
-	void multiply();
-	void divide();
-	void store(int value);
-	void print();
+	void add(Stack & stack);
+	void subtract(Stack & stack);
+	void multiply(Stack & stack);
+	void divide(Stack & stack);
+	void store(Stack & stack, int value);
+	void print(Stack & stack);
 
-	Stack stack;
 	char * bytecode;
 	int size;
+	const int args;
 
 	Sub ** subs;
 };

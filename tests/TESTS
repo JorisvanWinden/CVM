@@ -3,3 +3,4 @@ Behaviour of the tests is specified in this file.
 Add: Add the numbers 1 and 1, print.
 Add-sub: Make a subroutine adding 1 and 2 and printing, execute it twice.
 Print: Print the number 5.
+Print-sub: Make subroutine with one argument, call it with a number.

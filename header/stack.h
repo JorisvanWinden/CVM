@@ -3,13 +3,12 @@
 
 class Stack {
 public:
-	Stack(int size);
-	~Stack();
+	Stack(int * stack, int size);
+	Stack(const Stack & source, int start);
 
 	int peek();
 	int pop();
 	void push(int val);
-
 	void reset();
 private:
 	int * stack;

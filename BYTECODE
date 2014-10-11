@@ -5,7 +5,7 @@
 04: Push the next byte to the stack. 
 05: Not implemented yet.
 06: Print the first number from the stack.
-07: Marks the beginning of a subroutine.
+07: Marks the beginning of a subroutine. Parameter signifies number of arguments.
 08: Marks the ending of a subroutine.
 09: Enter subroutine. The next byte specifies which subroutine to use.
 

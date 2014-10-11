@@ -17,7 +17,7 @@ private:
 	
 	void interpret(char bytecode[], int size);
 
-	void make_sub(char bytecode[], int size);
+	void make_sub(char bytecode[], int size, int args);
 };
 
 #endif

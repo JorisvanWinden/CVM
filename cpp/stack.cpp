@@ -1,11 +1,14 @@
 #include "../header/stack.h"
 #include <assert.h>
+#include <iostream>
+#include "../header/log.h"
 
-Stack::Stack(int size) : size(size), top(-1), stack(new int[size]) {}
+Stack::Stack(int * stack, int size) : size(size), top(-1), stack(stack) {}
 
-Stack::~Stack() {
-	delete[] stack;
-}
+Stack::Stack(const Stack & source, int args) :
+	stack(source.stack + source.top - args),
+	top(args),
+	size(source.size - source.top) {}
 
 int Stack::peek() {
 	assert(top > -1);

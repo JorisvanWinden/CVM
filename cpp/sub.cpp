@@ -5,67 +5,74 @@
 #include <assert.h>
 #include <iostream>
 
-Sub::Sub(Sub * subs[], char * bytecode, int size) : 
-	bytecode(bytecode), size(size), subs(subs), stack(Stack(20)) {
+Sub::Sub(Sub * subs[], char * bytecode, int size, int args) : 
+	bytecode(bytecode), size(size), subs(subs), args(args) {
 		
 	}
 
-void Sub::run() {
-	stack.reset();
+void Sub::run(Stack & stack) {
 	for(int i = 0; i * 2 < size; i++) {
-		execute(bytecode[i * 2], bytecode[i * 2 + 1]);
+		execute(stack, bytecode[i * 2], bytecode[i * 2 + 1]);
 	}
+	stack.reset();
+
 }
 
-void Sub::execute(char inst, char par) {		
+int Sub::get_args() {
+	return args;
+}
+
+void Sub::execute(Stack & stack, char inst, char par) {		
 	switch(inst) {
 		case OPER_STO:
-			store(par);
+			store(stack, par);
 			break;
 		case OPER_PNT:
-			print();
+			print(stack);
 			break;
 		case OPER_ADD:
-			add();
+			add(stack);
 			break;
 		case OPER_SUB:
-			subtract();
+			subtract(stack);
 			break;
 		case OPER_MUL:
-			multiply();
+			multiply(stack);
 			break;
 		case OPER_DIV:
-			divide();
+			divide(stack);
 			break;
 		case OPER_ENT:
-			subs[par]->run();
+			Sub * sub = subs[par];
+			Stack nstack(stack, sub->get_args());
+			sub->run(nstack);
 			break;
 	}
 	#ifdef NDEBUG
-	print_stack();
+	print_stack(stack);
 	#endif
 }
 
-void Sub::add() {
+void Sub::add(Stack & stack) {
 	stack.push(stack.pop() + stack.pop());
 }
 
-void Sub::subtract() {
+void Sub::subtract(Stack & stack) {
 	stack.push(stack.pop() - stack.pop());
 }
 
-void Sub::multiply() {
+void Sub::multiply(Stack & stack) {
 	stack.push(stack.pop() * stack.pop());
 }
 
-void Sub::divide() {
+void Sub::divide(Stack & stack) {
 	stack.push(stack.pop() / stack.pop());
 }
 
-void Sub::store(int value) {
+void Sub::store(Stack & stack, int value) {
 	stack.push(value);
 }
 
-void Sub::print() {
+void Sub::print(Stack & stack) {
 	std::cout << stack.peek() << std::endl;
 }

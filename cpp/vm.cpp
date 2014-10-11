@@ -36,16 +36,20 @@ void VM::interpret(char bytecode[], int size) {
 				if(bytecode[j] == OPER_END) {
 					int start = i;
 					int size = j - i + 1;
-					make_sub(bytecode + start, size);
+					make_sub(bytecode + start, size, bytecode[start + 1]);
 					break;
 				}
 			}
 		}
 	}
-	subs[0]->run();
+	int * stack_arr = new int[20];
+	Stack stack(stack_arr, 20);
+	subs[0]->run(stack);
+
+	delete[] stack_arr;
 }
 
-void VM::make_sub(char bytecode[], int size) {
-	subs[num_subs] = new Sub(subs, bytecode, size);
+void VM::make_sub(char bytecode[], int size, int args) {
+	subs[num_subs] = new Sub(subs, bytecode, size, args);
 	num_subs++;
 }
