@@ -3,10 +3,10 @@
 
 class Stack {
 public:
-	Stack(int * stack, int size);
-	Stack(const Stack & source, int start);
+	explicit Stack(int * stack, int size);
+	explicit Stack(const Stack & source, int start);
 
-	int peek();
+	int peek() const;
 	int pop();
 	void push(int val);
 	void reset();

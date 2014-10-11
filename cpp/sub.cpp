@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <iostream>
 
-Sub::Sub(Sub * subs[], char * bytecode, int size, int args) : 
+Sub::Sub(Sub * subs[], const char * bytecode, const int size, const int args) : 
 	bytecode(bytecode), size(size), subs(subs), args(args) {
 		
 	}
@@ -15,14 +15,13 @@ void Sub::run(Stack & stack) {
 		execute(stack, bytecode[i * 2], bytecode[i * 2 + 1]);
 	}
 	stack.reset();
-
 }
 
 int Sub::get_args() {
 	return args;
 }
 
-void Sub::execute(Stack & stack, char inst, char par) {		
+void Sub::execute(Stack & stack, const char inst, const char par) {		
 	switch(inst) {
 		case OPER_STO:
 			store(stack, par);
@@ -73,6 +72,6 @@ void Sub::store(Stack & stack, int value) {
 	stack.push(value);
 }
 
-void Sub::print(Stack & stack) {
+void Sub::print(Stack & stack) const {
 	std::cout << stack.peek() << std::endl;
 }

@@ -29,7 +29,7 @@ void VM::run(std::ifstream & file) {
 	delete[] bytes;
 }
 
-void VM::interpret(char bytecode[], int size) {
+void VM::interpret(const char bytecode[], const int size) {
 	for(int i = 0; i < size; i++) {
 		if(bytecode[i] == OPER_MKS) {
 			for(int j = i; j < size; j++) {
@@ -49,7 +49,7 @@ void VM::interpret(char bytecode[], int size) {
 	delete[] stack_arr;
 }
 
-void VM::make_sub(char bytecode[], int size, int args) {
+void VM::make_sub(const char bytecode[], const int size, const int args) {
 	subs[num_subs] = new Sub(subs, bytecode, size, args);
 	num_subs++;
 }

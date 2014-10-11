@@ -10,7 +10,7 @@ Stack::Stack(const Stack & source, int args) :
 	top(args),
 	size(source.size - source.top) {}
 
-int Stack::peek() {
+int Stack::peek() const {
 	assert(top > -1);
 	return stack[top];
 }

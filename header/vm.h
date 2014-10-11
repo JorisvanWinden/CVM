@@ -8,16 +8,16 @@
 
 class VM {
 public:
-	VM();
+	explicit VM();
 	~VM();
 	void run(std::ifstream & file);
 private:
 	Sub * subs[MAX_SUBS];
 	int num_subs;
 	
-	void interpret(char bytecode[], int size);
+	void interpret(const char bytecode[], const int size);
 
-	void make_sub(char bytecode[], int size, int args);
+	void make_sub(const char bytecode[], const int size, const int args);
 };
 
 #endif
