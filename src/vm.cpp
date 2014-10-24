@@ -1,6 +1,6 @@
-#include "../header/vm.h"
-#include "../header/stack.h"
-#include "../header/instruction.h"
+#include "vm.h"
+#include "stack.h"
+#include "instruction.h"
 
 #include <iostream>
 #include <fstream>

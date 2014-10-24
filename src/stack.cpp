@@ -1,9 +1,9 @@
-#include "../header/stack.h"
+#include "stack.h"
 #include <assert.h>
 #include <iostream>
-#include "../header/log.h"
+#include "log.h"
 
-Stack::Stack(int * stack, int size) : size(size), top(-1), stack(stack) {}
+Stack::Stack(int * stack, int size) : stack(stack), top(-1), size(size) {}
 
 Stack::Stack(const Stack & source, int args) :
 	stack(source.stack + source.top - args),

@@ -1,12 +1,12 @@
-#include "../header/sub.h"
-#include "../header/stack.h"
-#include "../header/instruction.h"
+#include "sub.h"
+#include "stack.h"
+#include "instruction.h"
 
 #include <assert.h>
 #include <iostream>
 
 Sub::Sub(Sub * subs[], const char * bytecode, const int size, const int args) : 
-	bytecode(bytecode), size(size), subs(subs), args(args) {
+	bytecode(bytecode), size(size), args(args), subs(subs) {
 		
 	}
 

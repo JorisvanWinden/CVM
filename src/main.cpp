@@ -1,6 +1,6 @@
 #include <fstream>
 #include <iostream>
-#include "../header/vm.h"
+#include "vm.h"
 
 int main(int argc, char * argv[]) {
 	VM vm;

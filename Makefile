@@ -1,17 +1,26 @@
-objects = vm.o main.o stack.o sub.o log.o
+CC=g++
+CPPFLAGS=-g -O2 -Wall -Wextra -Isrc -rdynamic
+LDFLAGS=
+NAME=vm
 
-vm: $(objects)
-	g++ -o vm $(objects)
-vm.o: header/vm.h
-	g++ -c cpp/vm.cpp
-stack.o: header/stack.h
-	g++ -c cpp/stack.cpp
-sub.o: header/sub.h
-	g++ -c cpp/sub.cpp
-main.o:
-	g++ -c cpp/main.cpp
-log.o: header/log.h
-	g++ -c cpp/log.cpp
+VPATH=src
 
+SOURCES=$(wildcard src/**/*.cpp src/*.cpp)
+OBJECTS=$(patsubst %.cpp,%.o,$(SOURCES))
+
+TARGET_EX=bin/$(NAME)
+
+all: exec
+exec: $(TARGET_EX)
+
+main.o: main.cpp
+
+$(TARGET_EX): $(OBJECTS) build
+	$(CC) -o $@ $(LDFLAGS) $(CPPFLAGS) $(OBJECTS)
+
+build:
+	@mkdir -p bin
+
+.PHONY:
 clean:
-	rm -f $(objects) vm
+	@$(RM) -r bin $(OBJECTS)
