@@ -1,12 +1,12 @@
 #include "vm.h"
 #include "stack.h"
 #include "instruction.h"
+#include "log.h"
 
 #include <iostream>
 #include <fstream>
-#include <assert.h>
 
-#define NDEBUG
+#define TAG "VM"
 
 VM::VM() : num_subs(0) {}
 
@@ -30,6 +30,7 @@ void VM::run(std::ifstream & file) {
 }
 
 void VM::interpret(const char bytecode[], const int size) {
+	log(TAG, "Interpreting");
 	for(int i = 0; i < size; i++) {
 		if(bytecode[i] == OPER_MKS) {
 			for(int j = i; j < size; j++) {
@@ -50,6 +51,7 @@ void VM::interpret(const char bytecode[], const int size) {
 }
 
 void VM::make_sub(const char bytecode[], const int size, const int args) {
-	subs[num_subs] = new Sub(subs, bytecode, size, args);
+	log(TAG, "Making sub");
+	subs[num_subs] = new Sub(subs, &num_subs, bytecode, size, args);
 	num_subs++;
 }

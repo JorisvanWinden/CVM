@@ -5,7 +5,7 @@
 
 class Sub {
 public:
-	explicit Sub(Sub ** const subs, const char * bytecode, const int size, const int args);
+	explicit Sub(Sub ** const subs, int * num_subs, const char * bytecode, const int size, const int args);
 	void run(Stack & stack);
 	int get_args();
 private:
@@ -21,6 +21,7 @@ private:
 	const char * bytecode;
 	const int size;
 	const int args;
+	int * num_subs;
 
 	Sub ** const subs;
 };
