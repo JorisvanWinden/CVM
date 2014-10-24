@@ -1,7 +1,7 @@
-#include "stack.h"
-#include "exit.h"
+#include <stack.h>
+#include <exit.h>
 #include <iostream>
-#include "log.h"
+#include <log.h>
 
 #define TAG "Stack"
 

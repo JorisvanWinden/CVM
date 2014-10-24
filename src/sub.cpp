@@ -1,8 +1,8 @@
-#include "sub.h"
-#include "stack.h"
-#include "instruction.h"
-#include "exit.h"
-#include "log.h"
+#include <sub.h>
+#include <stack.h>
+#include <instruction.h>
+#include <exit.h>
+#include <log.h>
 
 #include <assert.h>
 #include <iostream>

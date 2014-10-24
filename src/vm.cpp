@@ -1,7 +1,7 @@
-#include "vm.h"
-#include "stack.h"
-#include "instruction.h"
-#include "log.h"
+#include <vm.h>
+#include <stack.h>
+#include <instruction.h>
+#include <log.h>
 
 #include <iostream>
 #include <fstream>

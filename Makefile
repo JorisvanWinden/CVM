@@ -1,5 +1,5 @@
 CC=g++
-CPPFLAGS=-g -O2 -Wall -Wextra -Isrc -rdynamic
+CPPFLAGS=-g -O2 -Wall -Wextra -Isrc -rdynamic -Iinclude/
 LDFLAGS=
 NAME=vm
 
